@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('../views/Student/AdminDashboard/AdminDashboard.vue')
+      component: () => import('../views/Student/StudentDashboard/StudentDashboard.vue')
     },
     {
       path: '/admin/live',
