@@ -30,7 +30,7 @@ export const studentLiveDummyData: StudentLive[] = [
     },
     {
         id: 4,
-        name: 'Event 3',
+        name: 'Event 4',
         url: 'https://www.youtube.com/embed/5MgBikgcWnY',
         details: {
             title: 'Sales Fundamentals ',
@@ -39,7 +39,7 @@ export const studentLiveDummyData: StudentLive[] = [
     },
     {
         id: 5,
-        name: 'Event 3',
+        name: 'Event 5',
         url: 'https://www.youtube.com/embed/V6yixyiJcos',
         details: {
             title: 'Sales Fundamentals ',
@@ -48,7 +48,7 @@ export const studentLiveDummyData: StudentLive[] = [
     },
     {
         id: 6,
-        name: 'Event 3',
+        name: 'Event 6',
         url: 'https://www.youtube.com/embed/PXwStduNw14',
         details: {
             title: 'Sales Fundamentals ',
