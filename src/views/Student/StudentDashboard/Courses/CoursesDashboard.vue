@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, reactive } from 'vue';
 import type { Courses } from './CourseDashboard.type';
+import StarRating from 'vue-star-rating'
 import { popularCourseDummyData, freeCourseDummyData, shortCourseDummyData, longCourseDummyData } from './CourseDummyData';
 
 const popularCourses = ref<Courses[]>(popularCourseDummyData);
@@ -29,14 +30,21 @@ const longCourses = ref<Courses[]>(longCourseDummyData);
       
                   <div class="flex align-items-center flex-wrap gap-1 rating">
                     <h1 class="inter-normal black-1" style="font-size: 13px; font-weight: 400;">{{ value.data.rating }}</h1>
-                    <div class="star-container" style="color: #333;"></div>
+                    <StarRating class="star-container" active-color="#333" v-model:rating="value.data.rating" :increment="0.01"
+                    :round-star-rating="false" :show-rating="false" :star-size="10" read-only/>
                     <h2 class="inter-normal black-1" style="font-size: 13px; font-weight: 400;">({{ value.data.review }} Reviews)</h2>
                   </div>
       
                   <h1 class="completed">
                     <span class="font-bold suggested-orange">{{ value.data.totalCompleted }}</span> completed the course
                   </h1>
-                  <h1 class="hours">{{ value.data.totalHour }} Total Hours | {{ value.data.lecturers }} Lectures | {{ value.data.level }}</h1>
+                    <h1 class="hours">
+                      <span style="color: #E96853; font-weight: 700;">{{ value.data.totalHour }}</span>
+                     Total Hours | 
+                     <span style="color: #E96853; font-weight: 700;">{{ value.data.lecturers }}</span>
+                      Lectures | 
+                      <span style="color: #E96853; font-weight: 700;">{{ value.data.level }}</span>
+                    </h1>
       
                   <div class="flex gap-1 price-container">
                     <h1 class="price">RM {{ value.data.price }}</h1>
@@ -65,15 +73,21 @@ const longCourses = ref<Courses[]>(longCourseDummyData);
     
                 <div class="flex align-items-center flex-wrap gap-1 rating">
                   <h1 class="inter-normal black-1" style="font-size: 13px; font-weight: 400;">{{ value.data.rating }}</h1>
-                  <div class="star-container" style="color: #333;"></div>
+                  <StarRating class="star-container" active-color="#333" v-model:rating="value.data.rating" :increment="0.01"
+                    :round-star-rating="false" :show-rating="false" :star-size="10" read-only/>
                   <h2 class="inter-normal black-1" style="font-size: 13px; font-weight: 400;">({{ value.data.review }} Reviews)</h2>
                 </div>
     
                 <h1 class="completed">
                   <span class="font-bold suggested-orange">{{ value.data.totalCompleted }}</span> completed the course
                 </h1>
-                <h1 class="hours">{{ value.data.totalHour }} Total Hours | {{ value.data.lecturers }} Lectures | {{ value.data.level }}</h1>
-    
+                <h1 class="hours">
+                  <span style="color: #E96853; font-weight: 700;">{{ value.data.totalHour }}</span>
+                 Total Hours | 
+                 <span style="color: #E96853; font-weight: 700;">{{ value.data.lecturers }}</span>
+                  Lectures | 
+                  <span style="color: #E96853; font-weight: 700;">{{ value.data.level }}</span>
+                </h1>    
                 <div class="flex gap-1 price-container">
                   <h1 class="price">RM {{ value.data.price }}</h1>
                   <h1 class="price-discount"><strike>RM {{ value.data.priceWas }}</strike></h1>
@@ -101,15 +115,21 @@ const longCourses = ref<Courses[]>(longCourseDummyData);
   
               <div class="flex align-items-center flex-wrap gap-1 rating">
                 <h1 class="inter-normal black-1" style="font-size: 13px; font-weight: 400;">{{ value.data.rating }}</h1>
-                <div class="star-container" style="color: #333;"></div>
+                <StarRating class="star-container" active-color="#333" v-model:rating="value.data.rating" :increment="0.01"
+                    :round-star-rating="false" :show-rating="false" :star-size="10" read-only/>
                 <h2 class="inter-normal black-1" style="font-size: 13px; font-weight: 400;">({{ value.data.review }} Reviews)</h2>
               </div>
   
               <h1 class="completed">
                 <span class="font-bold suggested-orange">{{ value.data.totalCompleted }}</span> completed the course
               </h1>
-              <h1 class="hours">{{ value.data.totalHour }} Total Hours | {{ value.data.lecturers }} Lectures | {{ value.data.level }}</h1>
-  
+              <h1 class="hours">
+                <span style="color: #E96853; font-weight: 700;">{{ value.data.totalHour }}</span>
+               Total Hours | 
+               <span style="color: #E96853; font-weight: 700;">{{ value.data.lecturers }}</span>
+                Lectures | 
+                <span style="color: #E96853; font-weight: 700;">{{ value.data.level }}</span>
+              </h1>  
               <div class="flex gap-1 price-container">
                 <h1 class="price">RM {{ value.data.price }}</h1>
                 <h1 class="price-discount"><strike>RM {{ value.data.priceWas }}</strike></h1>
@@ -137,15 +157,21 @@ const longCourses = ref<Courses[]>(longCourseDummyData);
 
             <div class="flex align-items-center flex-wrap gap-1 rating">
               <h1 class="inter-normal black-1" style="font-size: 13px; font-weight: 400;">{{ value.data.rating }}</h1>
-              <div class="star-container" style="color: #333;"></div>
+              <StarRating class="star-container" active-color="#333" v-model:rating="value.data.rating" :increment="0.01"
+                    :round-star-rating="false" :show-rating="false" :star-size="10" read-only/>
               <h2 class="inter-normal black-1" style="font-size: 13px; font-weight: 400;">({{ value.data.review }} Reviews)</h2>
             </div>
 
             <h1 class="completed">
               <span class="font-bold suggested-orange">{{ value.data.totalCompleted }}</span> completed the course
             </h1>
-            <h1 class="hours">{{ value.data.totalHour }} Total Hours | {{ value.data.lecturers }} Lectures | {{ value.data.level }}</h1>
-
+            <h1 class="hours">
+              <span style="color: #E96853; font-weight: 700;">{{ value.data.totalHour }}</span>
+             Total Hours | 
+             <span style="color: #E96853; font-weight: 700;">{{ value.data.lecturers }}</span>
+              Lectures | 
+              <span style="color: #E96853; font-weight: 700;">{{ value.data.level }}</span>
+            </h1>
             <div class="flex gap-1 price-container">
               <h1 class="price">RM {{ value.data.price }}</h1>
               <h1 class="price-discount"><strike>RM {{ value.data.priceWas }}</strike></h1>
