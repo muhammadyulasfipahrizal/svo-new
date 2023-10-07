@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, reactive } from 'vue';
 import type { Courses } from './CourseDashboard.type';
-import { popularCourseDummyData, freeCourseDummyData } from './CourseDummyData';
+import { popularCourseDummyData, freeCourseDummyData, shortCourseDummyData, longCourseDummyData } from './CourseDummyData';
 
 const popularCourses = ref<Courses[]>(popularCourseDummyData);
 const freeCourses = ref<Courses[]>(freeCourseDummyData);
+const shortCourses = ref<Courses[]>(shortCourseDummyData);
+const longCourses = ref<Courses[]>(longCourseDummyData);
 </script>
 
 <template>
@@ -37,8 +39,8 @@ const freeCourses = ref<Courses[]>(freeCourseDummyData);
                   <h1 class="hours">{{ value.data.totalHour }} Total Hours | {{ value.data.lecturers }} Lectures | {{ value.data.level }}</h1>
       
                   <div class="flex gap-1 price-container">
-                    <h1 class="price">{{ value.data.price }}</h1>
-                    <h1 class="price-discount"><strike>{{ value.data.priceWas }}</strike></h1>
+                    <h1 class="price">RM {{ value.data.price }}</h1>
+                    <h1 class="price-discount"><strike>RM {{ value.data.priceWas }}</strike></h1>
                   </div>
                 </div>
               </div>
@@ -73,8 +75,8 @@ const freeCourses = ref<Courses[]>(freeCourseDummyData);
                 <h1 class="hours">{{ value.data.totalHour }} Total Hours | {{ value.data.lecturers }} Lectures | {{ value.data.level }}</h1>
     
                 <div class="flex gap-1 price-container">
-                  <h1 class="price">{{ value.data.price }}</h1>
-                  <h1 class="price-discount"><strike>{{ value.data.priceWas }}</strike></h1>
+                  <h1 class="price">RM {{ value.data.price }}</h1>
+                  <h1 class="price-discount"><strike>RM {{ value.data.priceWas }}</strike></h1>
                 </div>
               </div>
             </div>
@@ -85,7 +87,7 @@ const freeCourses = ref<Courses[]>(freeCourseDummyData);
   <!-- short course -->
   <div class="flex flex-column" style="gap: 10px">
     <p class="text-xl font-bold">Short course</p>
-    <Carousel :value="freeCourses" :numVisible="4" :numScroll="4" class="carousel-width">
+    <Carousel :value="shortCourses" :numVisible="4" :numScroll="4" class="carousel-width">
       <template #item="value">
           <div class="courses max-w-min">
             <div class="course-card p-1 border-1 surface-border flex flex-column gap-1">
@@ -109,8 +111,8 @@ const freeCourses = ref<Courses[]>(freeCourseDummyData);
               <h1 class="hours">{{ value.data.totalHour }} Total Hours | {{ value.data.lecturers }} Lectures | {{ value.data.level }}</h1>
   
               <div class="flex gap-1 price-container">
-                <h1 class="price">{{ value.data.price }}</h1>
-                <h1 class="price-discount"><strike>{{ value.data.priceWas }}</strike></h1>
+                <h1 class="price">RM {{ value.data.price }}</h1>
+                <h1 class="price-discount"><strike>RM {{ value.data.priceWas }}</strike></h1>
               </div>
             </div>
           </div>
@@ -121,7 +123,7 @@ const freeCourses = ref<Courses[]>(freeCourseDummyData);
 <!-- long course -->
 <div class="flex flex-column" style="gap: 10px">
   <p class="text-xl font-bold">Long course</p>
-  <Carousel :value="freeCourses" :numVisible="4" :numScroll="4" class="carousel-width">
+  <Carousel :value="longCourses" :numVisible="4" :numScroll="4" class="carousel-width">
     <template #item="value">
         <div class="courses max-w-min">
           <div class="course-card p-1 border-1 surface-border flex flex-column gap-1">
@@ -145,8 +147,8 @@ const freeCourses = ref<Courses[]>(freeCourseDummyData);
             <h1 class="hours">{{ value.data.totalHour }} Total Hours | {{ value.data.lecturers }} Lectures | {{ value.data.level }}</h1>
 
             <div class="flex gap-1 price-container">
-              <h1 class="price">{{ value.data.price }}</h1>
-              <h1 class="price-discount"><strike>{{ value.data.priceWas }}</strike></h1>
+              <h1 class="price">RM {{ value.data.price }}</h1>
+              <h1 class="price-discount"><strike>RM {{ value.data.priceWas }}</strike></h1>
             </div>
           </div>
         </div>
