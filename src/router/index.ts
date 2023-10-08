@@ -16,7 +16,7 @@ const router = createRouter({
     {
       path: '/admin/live',
       name: 'live',
-      component: () => import('../views/Student/AdminLive/AdminLiveView.vue')
+      component: () => import('../views/Student/StudentLive/StudentLive.vue')
     },
     // Profile Instructor
     {
