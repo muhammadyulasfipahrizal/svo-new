@@ -1,6 +1,6 @@
-import type { StudentDashboard } from "./CorouselDasboard.type";
+import type { CorouselDashboard } from "./CorouselDasboard.type";
 
-export const corouselDummydata: StudentDashboard[] = [
+export const corouselDummydata: CorouselDashboard[] = [
     {   
         id: 1,
         image: '/assets/img/event/innovations.png',
