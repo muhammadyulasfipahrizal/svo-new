@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { StudentLive, CommentLive } from './StudentLive.type';
+import type { StudentLive, CommentLive } from './StudentLive.type';
 import { studentLiveDummyData, commentLiveDummyData } from './studentLiveDummyData';
 
 const liveList = ref<StudentLive[]>(studentLiveDummyData) 

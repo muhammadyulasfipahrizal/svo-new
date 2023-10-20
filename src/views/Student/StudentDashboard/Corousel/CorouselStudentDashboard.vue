@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { CorouselDashboard } from './CorouselDasboard.type';
+import type { CorouselDashboard } from './CorouselDasboard.type';
 import { corouselDummydata } from './CorouselDummyData';
 
 const dashboardList = ref<CorouselDashboard[]>(corouselDummydata)

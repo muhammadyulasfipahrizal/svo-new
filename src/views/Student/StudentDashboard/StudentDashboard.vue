@@ -5,13 +5,13 @@ import { format, parse } from 'date-fns';
 import CorouselStudentDashboardVue from './Corousel/CorouselStudentDashboard.vue';
 import CoursesDashboard from './Courses/CoursesDashboard.vue';
 
-import type {  DailyTask } from './DailyTask/DailyTask.type';
+import type { DailyTask } from './DailyTask/DailyTask.type';
 import { dailyTaskDummyData } from './DailyTask/DailyTaskDummyData';
 import type { ExamSchedule } from './ExamSchedule/ExamSchedule.type';
 import { ExamScheduleDummyData } from './ExamSchedule/ExamSchedueleDummyData'
 
 import { activitiesDummyData } from './Activity/ActivityDummyData';
-import type Activities from'./Activity/Activity.type'
+import type { Activities } from './Activity/Activity.type'
 const dummyData = [...activitiesDummyData];
 
 
@@ -64,56 +64,63 @@ const onClickDay = (v: Date) => {
                 <div class="flex flex-column" style="gap: 20px;">
                     <p class="inter-normal black-2" style="font-size: 25px; font-weight: 700;">About yourself</p>
                     <div class="bg-white input-card">
-                            <div class="flex flex-column" style="gap: 10px">   
-                                <p class="inter-normal black-2" style="font-size: 20px; font-weight: 700;">Tell us about yourself</p>
-                                <div class="flex align-items-center" style="gap: 5px">
-                                    <p class="inter-normal black-2 min-w-max" style="font-size: 15px; font-weight: 700;">I am currently a</p>
-                                    <InputText label="Enter" class="p-inputtext-sm w-full"
-                                            placeholder="Enter..." style="height: 34px"/>
-                                </div>
-                                <div class="flex align-items-center" style="gap: 5px">
-                                    <p class="inter-normal black-2 min-w-max" style="font-size: 15px; font-weight: 700;">I want to be a</p>
-                                    <InputText label="Enter" class="p-inputtext-sm w-full"
-                                            placeholder="Enter..." style="height: 34px"/>
-                                </div>
-                                <Button
-                                    class=" border-rounded-sm btn-default align-self-end" style="border-radius: 10px
-                                    width: 85px; height: 35px; margin-bottom: 10px">
-                                    <p class="font-medium">SAVE</p>
-                                </Button>
+                        <div class="flex flex-column" style="gap: 10px">
+                            <p class="inter-normal black-2" style="font-size: 20px; font-weight: 700;">Tell us about
+                                yourself</p>
+                            <div class="flex align-items-center" style="gap: 5px">
+                                <p class="inter-normal black-2 min-w-max" style="font-size: 15px; font-weight: 700;">I am
+                                    currently a</p>
+                                <InputText label="Enter" class="p-inputtext-sm w-full" placeholder="Enter..."
+                                    style="height: 34px" />
                             </div>
+                            <div class="flex align-items-center" style="gap: 5px">
+                                <p class="inter-normal black-2 min-w-max" style="font-size: 15px; font-weight: 700;">I want
+                                    to be a</p>
+                                <InputText label="Enter" class="p-inputtext-sm w-full" placeholder="Enter..."
+                                    style="height: 34px" />
+                            </div>
+                            <Button class=" border-rounded-sm btn-default align-self-end" style="border-radius: 10px
+                                    width: 85px; height: 35px; margin-bottom: 10px">
+                                <p class="font-medium">SAVE</p>
+                            </Button>
+                        </div>
                     </div>
                 </div>
-            <!-- daily task -->
+                <!-- daily task -->
                 <p class="inter-normal black-2" style="font-size: 25px; font-weight: 700;">Daily Task</p>
                 <div class="bg-white input-card" style="gap: 10px">
                     <!-- progress -->
                     <div class="flex flex-row justify-content-center" style="padding: 10px;">
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center" style="height: 75px; gap:10px">
+                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
+                            style="height: 75px; gap:10px">
                             <div class="flex flex-column progress-badge">
                                 <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">20</p>
                             </div>
                             <div class="progress-bar w-full" style="height: 15px; border-radius: 10px 0px 0px 10px;"></div>
                         </div>
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center" style="height: 75px; gap:10px">
+                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
+                            style="height: 75px; gap:10px">
                             <div class="flex flex-column progress-badge">
                                 <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">40</p>
                             </div>
                             <div class="progress-bar w-full" style="height: 15px;"></div>
                         </div>
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center" style="height: 75px; gap:10px">
+                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
+                            style="height: 75px; gap:10px">
                             <div class="flex flex-column progress-badge">
                                 <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">60</p>
                             </div>
                             <div class="progress-bar w-full" style="height: 15px;"></div>
                         </div>
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center" style="height: 75px; gap:10px">
+                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
+                            style="height: 75px; gap:10px">
                             <div class="flex flex-column progress-badge">
                                 <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">80</p>
                             </div>
                             <div class="progress-bar w-full" style="height: 15px;"></div>
                         </div>
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center" style="height: 75px; gap:10px">
+                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
+                            style="height: 75px; gap:10px">
                             <div class="flex flex-column progress-badge">
                                 <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">100</p>
                             </div>
@@ -121,24 +128,25 @@ const onClickDay = (v: Date) => {
                         </div>
                     </div>
                     <!-- task list -->
-                    <div class="flex flex-column" style="gap: 10px; margin-top: 10px" v-for="task in dailyTasks" :key="task.id">
+                    <div class="flex flex-column" style="gap: 10px; margin-top: 10px" v-for="task in dailyTasks"
+                        :key="task.id">
                         <div class="flex flex-column">
                             <div class="grid align-items-center justify-content-center">
                                 <div class="col-8 lg:col-8">
                                     <p>{{ task.name }}</p>
                                     <p>{{ task.description }}</p>
                                 </div>
-                                <button class="col-4 lg:col-2 btn-add" style="width: 99px; height: 39px;" 
-                                 :class="{'btn-achieved': task.achieved, 'btn-go': !task.achieved}">
+                                <button class="col-4 lg:col-2 btn-add" style="width: 99px; height: 39px;"
+                                    :class="{ 'btn-achieved': task.achieved, 'btn-go': !task.achieved }">
                                     <span class="mx-auto">{{ task.achieved ? 'Achieved' : 'Go' }}</span>
-                                  </button>
+                                </button>
                             </div>
                             <div class="line" style="margin-bottom: 10px"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- badge and exam scheduele section -->
             <div class="col-12 md:col-4 flex flex-column" style="gap: 20px">
                 <!-- badge -->
@@ -160,20 +168,20 @@ const onClickDay = (v: Date) => {
                     <!-- image and text -->
                     <div class="flex flex-row" style=" padding-top: 10px">
                         <div class="flex flex-column align-items-center" style="gap: 10px;">
-                            <img src="assets/img/badge/badge-student-social-media-specialist.png" alt=""
-                            style="width: 117px; height: 117px;">
+                            <img src="/assets/img/badge/badge-student-social-media-specialist.png" alt=""
+                                style="width: 117px; height: 117px;">
                             <p class="inter-normal black-2" style="font-size: 8px;
                              font-weight: 700;">Social Media Specialist</p>
                         </div>
                         <div class="flex flex-column align-items-center" style="gap: 10px">
-                            <img src="assets/img/badge/badge-student-email-marketting-specialist.png" alt=""
-                            style="width: 117px; height: 117px;">
+                            <img src="/assets/img/badge/badge-student-email-marketting-specialist.png" alt=""
+                                style="width: 117px; height: 117px;">
                             <p class="inter-normal black-2" style="font-size: 8px;
                              font-weight: 700;">Social Media Specialist</p>
                         </div>
                         <div class="flex flex-column align-items-center" style="gap: 10px">
-                            <img src="assets/img/badge/badge-student-search-marketting-specialist.png" alt=""
-                            style="width: 117px; height: 117px;">
+                            <img src="/assets/img/badge/badge-student-search-marketting-specialist.png" alt=""
+                                style="width: 117px; height: 117px;">
                             <p class="inter-normal black-2" style="font-size: 8px;
                              font-weight: 700;">Social Media Specialist</p>
                         </div>
@@ -184,14 +192,18 @@ const onClickDay = (v: Date) => {
                 <div class="bg-white input-card flex flex-column py-0">
                     <div class="flex flex-column" style="padding: 10px 10px" v-for="exam in examSchedules" :key="exam.id">
                         <div class="grid align-items-center">
-                            <div class="col-1 align-items-center" 
-                             style="border-radius: 10px; border: 1px solid #000; width: 50px; height: 50px; padding: 0px 13px">
-                                <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.day }}</p>
-                                <p class="inter-normal black-2" style="font-size: 10px; font-weight: 600;">{{ exam.month }}</p>
+                            <div class="col-1 align-items-center"
+                                style="border-radius: 10px; border: 1px solid #000; width: 50px; height: 50px; padding: 0px 13px">
+                                <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.day }}
+                                </p>
+                                <p class="inter-normal black-2" style="font-size: 10px; font-weight: 600;">{{ exam.month }}
+                                </p>
                             </div>
                             <div class="col-7">
-                                <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.name}}</p>
-                                <p class="inter-normal grey-1" style="font-size: 14px; font-weight: 600;">{{ exam.time }}</p>
+                                <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.name }}
+                                </p>
+                                <p class="inter-normal grey-1" style="font-size: 14px; font-weight: 600;">{{ exam.time }}
+                                </p>
                             </div>
                             <button class="btn-add col-4">
                                 <span>Attend</span>
@@ -205,31 +217,36 @@ const onClickDay = (v: Date) => {
             <div class="col-12 md:col-4 flex flex-column">
                 <!-- Calander -->
                 <div class="flex flex-column" style="gap: 10px">
-                    <p class="inter-normal black-2" style="font-size: 25px; font-weight: 700; margin-bottom: 10px">Calendar</p>
+                    <p class="inter-normal black-2" style="font-size: 25px; font-weight: 700; margin-bottom: 10px">Calendar
+                    </p>
                     <div class="flex justify-content-center">
                         <CustomCalendar @date-select="onClickDay" :markers="dataEvent" />
                     </div>
                 </div>
-    
+
                 <!-- Activities -->
                 <div class="flex flex-column gap-2 py-2">
-    
+
                     <div class="flex flex-row gap-2 text-lg align-items-center">
                         <i class="pi pi-calendar text-xl"></i>
                         <p class="inter-normal black-2" style="font-size: 20px; font-weight: 700;">{{ selectedDate }}</p>
-                        <p class="inter-normal black-2" style="font-size: 20px; font-weight: 700;">({{ activitiesList.length }}
+                        <p class="inter-normal black-2" style="font-size: 20px; font-weight: 700;">({{ activitiesList.length
+                        }}
                             activities)</p>
                     </div>
-    
+
                     <div>
                         <VirtualScroller :items="activitiesList" :itemSize="50" style="height: 290px">
                             <template v-slot:item="{ item }">
-                                <Card class="border-1 shadow-0 border-round mb-2 p-0 m-0 card mr-3" style="box-shadow: none;">
+                                <Card class="border-1 shadow-0 border-round mb-2 p-0 m-0 card mr-3"
+                                    style="box-shadow: none;">
                                     <template #content>
-                                        <p class="inter-normal suggested-orange" style="font-size: 16px; font-weight: 700;">{{
-                                            item.start_time }} - {{item.end_time }}</p>
+                                        <p class="inter-normal suggested-orange" style="font-size: 16px; font-weight: 700;">
+                                            {{
+                                                item.start_time }} - {{ item.end_time }}</p>
                                         <p class="poppins-normal black-2"
-                                            style="font-size: 18px; font-weight: 500; letter-spacing: 0.54px;">{{ item.activity
+                                            style="font-size: 18px; font-weight: 500; letter-spacing: 0.54px;">{{
+                                                item.activity
                                             }}</p>
                                     </template>
                                 </Card>
@@ -259,6 +276,7 @@ const onClickDay = (v: Date) => {
 
 <style lang="scss" scoped>
 @import "/src/assets/global.scss";
+
 .input-card {
     padding: 10px;
     border-radius: 8px;
@@ -298,18 +316,19 @@ const onClickDay = (v: Date) => {
     cursor: pointer;
     background: var(--Suggested-Pass-Color, #E26954);
     border: none;
-  
+
     span {
-      padding: 0;
-      color: var(--backgrounds-primary, #FFF);
-      font-family: Inter;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-      text-transform: uppercase;
+        padding: 0;
+        color: var(--backgrounds-primary, #FFF);
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        text-transform: uppercase;
     }
-  }
+}
+
 .line {
     height: 1px;
     flex-shrink: 0;
@@ -426,34 +445,33 @@ const onClickDay = (v: Date) => {
     border-radius: 6px;
     border: 1px solid #006785;
     background: transparent !important;
-  
+
     p {
-      color: #006785 !important;
+        color: #006785 !important;
     }
-  
+
     i {
-      color: #006785;
+        color: #006785;
     }
-  
+
     &:hover,
     &.active {
-      background: #006785 !important;
-  
-      p {
-        color: unset !important;
-      }
-  
-      i {
-        color: white;
-      }
-    }
-  }
+        background: #006785 !important;
 
-  .btn-achieved {
+        p {
+            color: unset !important;
+        }
+
+        i {
+            color: white;
+        }
+    }
+}
+
+.btn-achieved {
     background-color: #D9D9D9;
-  }
-  
-  .btn-go {
+}
+
+.btn-go {
     background-color: #E26954;
-  }
-</style>
+}</style>
