@@ -166,7 +166,7 @@ const onClickDay = (v: Date) => {
                         </Button>
                     </div>
                     <!-- image and text -->
-                    <div class="flex flex-row" style=" padding-top: 10px">
+                    <div class="flex flex-row justify-content-around" style=" padding-top: 10px">
                         <div class="flex flex-column align-items-center" style="gap: 10px;">
                             <img src="/assets/img/badge/badge-student-social-media-specialist.png" alt=""
                                 style="width: 117px; height: 117px;">
@@ -191,19 +191,21 @@ const onClickDay = (v: Date) => {
                 <p class="inter-normal black-2" style="font-size: 25px; font-weight: 700;">Exam Schedule</p>
                 <div class="bg-white input-card flex flex-column py-0">
                     <div class="flex flex-column" style="padding: 10px 10px" v-for="exam in examSchedules" :key="exam.id">
-                        <div class="grid align-items-center">
-                            <div class="col-1 align-items-center"
-                                style="border-radius: 10px; border: 1px solid #000; width: 50px; height: 50px; padding: 0px 13px">
-                                <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.day }}
-                                </p>
-                                <p class="inter-normal black-2" style="font-size: 10px; font-weight: 600;">{{ exam.month }}
-                                </p>
-                            </div>
-                            <div class="col-7">
-                                <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.name }}
-                                </p>
-                                <p class="inter-normal grey-1" style="font-size: 14px; font-weight: 600;">{{ exam.time }}
-                                </p>
+                        <div class="flex align-items-center justify-content-between">
+                            <div class="flex align-items-center">
+                                <div class="col-1 align-items-center"
+                                    style="border-radius: 10px; border: 1px solid #000; width: 50px; height: 50px; padding: 0px 13px">
+                                    <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.day }}
+                                    </p>
+                                    <p class="inter-normal black-2 text-center" style="font-size: 10px; font-weight: 600;">{{ exam.month }}
+                                    </p>
+                                </div>
+                                <div class="col-7">
+                                    <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.name }}
+                                    </p>
+                                    <p class="inter-normal grey-1" style="font-size: 14px; font-weight: 600;">{{ exam.time }}
+                                    </p>
+                                </div>
                             </div>
                             <button class="btn-add col-4">
                                 <span>Attend</span>
