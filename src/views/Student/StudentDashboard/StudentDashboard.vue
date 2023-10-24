@@ -134,7 +134,7 @@ const selectedTab = ref('home')
                                     <span class="mx-auto">{{ task.achieved ? 'Achieved' : 'Go' }}</span>
                                   </button>
                             </div>
-                            <div class="line" style="margin-bottom: 10px"></div>
+                            <div class="line" style="margin: 7px 0px 5px 0px"></div>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@ const selectedTab = ref('home')
                     </div>
     
                     <div>
-                        <VirtualScroller :items="activitiesList" :itemSize="100" style="height: 290px">
+                        <VirtualScroller :items="activitiesList" :itemSize="100" style="height: 245px">
                             <template v-slot:item="{ item }">
                                 <Card class="border-1 shadow-0 border-round mb-2 p-0 m-0 card mr-3" style="box-shadow: none;">
                                     <template #content>
