@@ -1,12 +1,13 @@
 <template>
   <div id="app-sidebar"
-    class="sidebar surface-section h-full md:h-auto hidden md:block flex-shrink-0 absolute md:static left-0 top-0 surface-border select-none max-h-screen overflow-hidden"
-    :class="{ minimize: sidebarStore.minimize }">
+    class="side-bar h-full md:h-auto"
+    :class="{ collapse: sidebarStore.minimize }">
+
     <div v-show="!isMobile" class="w-inherit">
       <a href="/dashboard">
-        <div class="logo-container">
-          <img src="/assets/img/svo-academy-logo.png" alt="Logo" class="logo-image">
-          <h1 class="header-title font-viga text-600">Education</h1>
+        <div class="logo-name">
+          <img src="/assets/img/svo-academy-logo.png" alt="Logo" class="logo">
+          <h1 class="logo-name__name font-viga text-600">Education</h1>
         </div>
       </a>
       <SidebarNavigation />
@@ -42,58 +43,44 @@ watchEffect(() => {
 
 <style scoped lang="scss">
 #app-sidebar {
-  min-width: 276px;
   background-color: #fff;
   padding: 1rem;
   top: 0;
   left: 0;
-
-  &.minimize {
-    min-width: unset;
-    width: 100%;
-    max-width: 90px;
-    padding: 0 25px;
-
-    .logo-container {
-      padding: 0;
-      margin-bottom: 1.5rem;
-
-      .header-title {
-        display: none;
-      }
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    padding: 0rem;
-  }
 }
 
-.logo-container {
+.side-bar {
+  width: 17rem;
+  height: 100%;
+  padding: 2.1rem 1.2rem;
+  background-color: #17171e;
+  transition: all 0.5s ease;
+}
+
+.logo-name-wrapper {
+  position: relative;
+  margin-bottom: 2.1rem;
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.logo-name {
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
 }
 
-.logo-image {
-  width: 50px;
-  height: 50px;
-  margin-right: 0.5rem;
+
+.side-bar.collapse {
+  width: 6rem;
 }
 
-.header-title {
-  margin: 0;
-  padding: 0.5rem 0;
-  color: black;
+.logo-name__name{
+  transition: opacity 0.6s ease;
+  opacity: 1;
 }
 
-.sidebar-transition-enter-active,
-.sidebar-transition-leave-active {
-  transition: transform 0.3s ease;
+.side-bar.collapse .logo-name__name{
+  opacity: 0;
 }
 
-.sidebar-transition-enter,
-.sidebar-transition-leave-to {
-  transform: translateX(-100%);
-}
 </style>
