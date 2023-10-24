@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { StudentLive, CommentLive } from './StudentLive.type';
+import type { StudentLive, CommentLive } from './StudentLive.type';
 import { studentLiveDummyData, commentLiveDummyData } from './studentLiveDummyData';
 
 const liveList = ref<StudentLive[]>(studentLiveDummyData) 
@@ -72,8 +72,7 @@ const commentList = ref<CommentLive[]>(commentLiveDummyData)
                     <div class="flex flex-row align-items-center" style="gap: 5px">
                       <div style="border-radius: 10px; border: 1px solid #EBEBEB; height: 50px"
                       class="flex align-items-center w-full">
-                        <p contenteditable class="inter-normal black-2" style="padding: 0px 10px; font-size: 14px;
-                          font-weight: 400;">Comment...</p>
+                          <input type="text" style="all: unset; padding-left: .9em !important;" class="black-2 inter-normal" placeholder="Comment...">
                       </div>
                     </div>
                 </div>
