@@ -287,6 +287,9 @@ const closeSidebar = () => {
 
 .navigation {
   &.minimize {
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(-10%);
+    
     .logo {
       padding: 0 0 1rem 0 !important;
     }
@@ -305,4 +308,5 @@ const closeSidebar = () => {
     }
   }
 }
+
 </style>
