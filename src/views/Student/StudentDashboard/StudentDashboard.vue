@@ -192,7 +192,7 @@ const selectedTab = ref('home')
                                 <div class="flex flex-column align-items-center justify-content-center" 
                                 style="border-radius: 10px; border: 1px solid #000; width: 50px; height: 50px;">
                                     <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.day }}</p>
-                                    <p class="inter-normal black-2" style="font-size: 10px; font-weight: 600;">{{ exam.month }}</p>
+                                    <p class="inter-normal black-2 uppercase" style="font-size: 10px; font-weight: 600;margin-top: -4px;">{{ exam.month }}</p>
                                 </div>
                                 <div class="flex flex-column">
                                     <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.name}}</p>
