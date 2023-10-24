@@ -37,63 +37,63 @@ export const activitiesDummyData: Activities[] = [
         checked: false
     },
     {
-        id: 2,
+        id: 6,
         start_time: '09:00',
         end_time: '10:00',
         activity: 'Conduct customer feedback surveys',
         checked: false
     },
     {
-        id: 1,
+        id: 7,
         start_time: '08:00',
         end_time: '10:00',
         activity: 'Plan CRM training sessions',
         checked: false
     },
     {
-        id: 2,
+        id: 8,
         start_time: '09:00',
         end_time: '10:00',
         activity: 'Conduct customer feedback surveys',
         checked: false
     },
     {
-        id: 1,
+        id: 9,
         start_time: '08:00',
         end_time: '10:00',
         activity: 'Plan CRM training sessions',
         checked: false
     },
     {
-        id: 2,
+        id: 10,
         start_time: '09:00',
         end_time: '10:00',
         activity: 'Conduct customer feedback surveys',
         checked: false
     },
     {
-        id: 1,
+        id: 11,
         start_time: '08:00',
         end_time: '10:00',
         activity: 'Plan CRM training sessions',
         checked: false
     },
     {
-        id: 2,
+        id: 12,
         start_time: '09:00',
         end_time: '10:00',
         activity: 'Conduct customer feedback surveys',
         checked: false
     },
     {
-        id: 1,
+        id: 13,
         start_time: '08:00',
         end_time: '10:00',
         activity: 'Plan CRM training sessions',
         checked: false
     },
     {
-        id: 2,
+        id: 14,
         start_time: '09:00',
         end_time: '10:00',
         activity: 'Conduct customer feedback surveys',

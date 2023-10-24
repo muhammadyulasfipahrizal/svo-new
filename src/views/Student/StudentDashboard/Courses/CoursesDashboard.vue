@@ -2,16 +2,24 @@
 import { ref, computed, reactive } from 'vue';
 import type { Courses } from './CourseDashboard.type';
 import StarRating from 'vue-star-rating'
-import { popularCourseDummyData, freeCourseDummyData, shortCourseDummyData, longCourseDummyData } from './CourseDummyData';
+import { popularCourseDummyData, freeCourseDummyData, shortCourseDummyData, longCourseDummyData, inProgressCourseDummyData, completedCourseDummyData } from './CourseDummyData';
 
 const popularCourses = ref<Courses[]>(popularCourseDummyData);
 const freeCourses = ref<Courses[]>(freeCourseDummyData);
 const shortCourses = ref<Courses[]>(shortCourseDummyData);
 const longCourses = ref<Courses[]>(longCourseDummyData);
+const inProgressCourses = ref<Courses[]>(inProgressCourseDummyData);
+const completedCourses = ref<Courses[]>(completedCourseDummyData);
+
+const props = defineProps({
+  selectedTab: String
+})
 </script>
 
 <template>
   <div class="flex flex-column" style="gap: 10px">
+
+    <div v-if="props.selectedTab === 'home'">
 
     <!-- popular course -->
     <div class="flex flex-column" style="gap: 10px">
@@ -181,6 +189,67 @@ const longCourses = ref<Courses[]>(longCourseDummyData);
     </template>
   </Carousel>
 </div>
+
+</div>
+
+<!-- in progress course -->
+<div class="flex flex-column" style="gap: 10px" v-if="props.selectedTab === 'In Progress'">
+  <p class="text-xl font-bold">In progress</p>
+  <Carousel :value="inProgressCourses" :numVisible="4" :numScroll="4" class="carousel-width">
+    <template #item="value">
+        <div class="courses max-w-min">
+          <div class="course-card p-1 border-1 surface-border flex flex-column gap-1">
+            <img :src="value.data.image" :alt="value.data.image" class="image-course" style="width: 251.4px; height: 141px;">
+            <h1 class="inter-normal black-1" style="font-size: 14px; font-weight: 700;">{{ value.data.name }}</h1>
+
+            <div class="flex gap-1 align-items-center instructor">
+              <img :src="value.data.lecturerImage" :alt="value.data.lecturerName" class="border-circle" style="width: 23px; height: 23px">
+              <h2 class="inter-normal black-1" style="font-size: 15px; font-weight: 400;">{{ value.data.lecturerName }}</h2>
+            </div>
+
+            <div class="flex flex-column">
+              <div class="progress-bar-container flex flex-column justify-content-center w-full">
+                <div class="progress-bar"
+                  :style="{ width: 90 + '%' }"></div>
+              </div>
+              <p class="inter-normal black-2" style="font-size: 12px; font-weight: 700; letter-spacing: 0.7px;">90 % completed</p>
+            </div>
+
+          </div>
+        </div>
+    </template>
+  </Carousel>
+</div>
+
+<!-- completed course -->
+<div class="flex flex-column" style="gap: 10px" v-if="props.selectedTab === 'Completed'">
+  <p class="text-xl font-bold">Completed</p>
+  <Carousel :value="completedCourses" :numVisible="4" :numScroll="4" class="carousel-width">
+    <template #item="value">
+        <div class="courses max-w-min">
+          <div class="course-card p-1 border-1 surface-border flex flex-column gap-1">
+            <img :src="value.data.image" :alt="value.data.image" class="image-course" style="width: 251.4px; height: 141px;">
+            <h1 class="inter-normal black-1" style="font-size: 14px; font-weight: 700;">{{ value.data.name }}</h1>
+
+            <div class="flex gap-1 align-items-center instructor">
+              <img :src="value.data.lecturerImage" :alt="value.data.lecturerName" class="border-circle" style="width: 23px; height: 23px">
+              <h2 class="inter-normal black-1" style="font-size: 15px; font-weight: 400;">{{ value.data.lecturerName }}</h2>
+            </div>
+
+            <div class="flex flex-column">
+              <div class="progress-bar-container flex flex-column justify-content-center w-full">
+                <div class="progress-bar"
+                  :style="{ width: 100 + '%' }"></div>
+              </div>
+              <p class="inter-normal black-2" style="font-size: 12px; font-weight: 700; letter-spacing: 0.7px;">100 % completed</p>
+            </div>
+
+          </div>
+        </div>
+    </template>
+  </Carousel>
+</div>
+
   <Button size="small" class="w-full border-noround" style="border: none;
          background-color: #00C0DD;">
             <p class="text-white mx-auto inter-normal" style="font-size: 13px;
@@ -308,6 +377,20 @@ const longCourses = ref<Courses[]>(longCourseDummyData);
       max-width: 100%;
     }
   }
+}
+
+.progress-bar-container {
+  width: 211px;
+  height: 6px;
+  background-color: #D9D9D9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #659872;
+  transition: width 0.5s;
 }
 
 .p-6px {

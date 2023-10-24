@@ -15,7 +15,6 @@ import type Activities from'./Activity/Activity.type'
 const dummyData = [...activitiesDummyData];
 
 
-
 const activitiesList = ref<Activities[]>(activitiesDummyData)
 const dailyTasks = ref<DailyTask[]>(dailyTaskDummyData)
 const examSchedules = ref<ExamSchedule[]>(ExamScheduleDummyData)
@@ -46,6 +45,8 @@ const onClickDay = (v: Date) => {
     const selected = dataEvent.find((event) => event.date === date);
     activitiesList.value = selected ? selected.data : []
 }
+
+const selectedTab = ref('home')
 </script>
 
 <template>
@@ -222,7 +223,7 @@ const onClickDay = (v: Date) => {
                     </div>
     
                     <div>
-                        <VirtualScroller :items="activitiesList" :itemSize="50" style="height: 290px">
+                        <VirtualScroller :items="activitiesList" :itemSize="100" style="height: 290px">
                             <template v-slot:item="{ item }">
                                 <Card class="border-1 shadow-0 border-round mb-2 p-0 m-0 card mr-3" style="box-shadow: none;">
                                     <template #content>
@@ -241,17 +242,20 @@ const onClickDay = (v: Date) => {
             <!-- courses section -->
             <div class="flex flex-column" style="margin: 10px 0px; gap: 10px">
                 <div class="flex flex-row" style="gap: 10px">
-                    <Button size="small" class="btn-header min-w-max active">
+                    <Button size="small" class="btn-header min-w-max" @click="selectedTab = 'home'"
+                     :class="{ active: selectedTab === 'home' }">
                         <p class="inter-normal text-white" style="font-size: 16px; font-weight: 600;">Home</p>
                     </Button>
-                    <Button size="small" class="btn-header min-w-max">
+                    <Button size="small" class="btn-header min-w-max" @click="selectedTab = 'In Progress'"
+                     :class="{ active: selectedTab === 'In Progress' }">
                         <p class="inter-normal text-white" style="font-size: 16px; font-weight: 600;">In Progress</p>
                     </Button>
-                    <Button size="small" class="btn-header min-w-max">
-                        <p class="inter-normal text-white" style="font-size: 16px; font-weight: 600;">Compeleted</p>
+                    <Button size="small" class="btn-header min-w-max" @click="selectedTab = 'Completed'"
+                     :class="{ active: selectedTab === 'Completed' }">
+                        <p class="inter-normal text-white" style="font-size: 16px; font-weight: 600;">Completed</p>
                     </Button>
                 </div>
-                <CoursesDashboard></CoursesDashboard>
+                <CoursesDashboard :selectedTab="selectedTab"></CoursesDashboard>
             </div>
         </div>
     </section>
@@ -456,4 +460,14 @@ const onClickDay = (v: Date) => {
   .btn-go {
     background-color: #E26954;
   }
+
+  ::v-deep(.card) {
+    .p-card-body {
+        padding: 0;
+
+        .p-card-content {
+            padding: 10px;
+        }
+    }
+}
 </style>
