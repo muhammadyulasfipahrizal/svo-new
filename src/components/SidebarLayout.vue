@@ -1,6 +1,6 @@
 <template>
   <div id="app-sidebar"
-    class="sidebar surface-section h-full md:h-auto hidden md:block flex-shrink-0 absolute md:static left-0 top-0 surface-border select-none max-h-screen overflow-y-auto"
+    class="sidebar surface-section h-full md:h-auto hidden md:block flex-shrink-0 absolute md:static left-0 top-0 surface-border select-none max-h-screen overflow-hidden"
     :class="{ minimize: sidebarStore.minimize }">
     <div v-show="!isMobile" class="w-inherit">
       <a href="/dashboard">
