@@ -230,8 +230,9 @@ const closeSidebar = () => {
 }
 
 .menuitem-link {
-  margin: 1rem 0;
+  margin: 0.8rem 0;
   display: flex;
+  width: 100%;
   align-items: center;
   text-decoration: none;
   color: #333;
@@ -300,11 +301,16 @@ const closeSidebar = () => {
     }
 
     a {
-      padding: 0.5rem;
+      padding: 0.5rem 0.5rem 0.2rem 0.5rem;
     }
 
     .menuitem-text {
-      display: none;
+      transition: width 0.8s ease-in-out, height 0.8s ease-in-out, padding 0.8s ease-in-out, margin 0.8s ease-in-out;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      padding: 0;
+      margin: 0;
     }
   }
 }
