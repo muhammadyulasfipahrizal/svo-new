@@ -1,5 +1,6 @@
 export interface Courses {
     id: number;
+    progress: number;
     name: string;
     image: string;
     lecturerName: string;

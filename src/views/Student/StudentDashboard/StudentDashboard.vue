@@ -15,7 +15,6 @@ import type { Activities } from './Activity/Activity.type'
 const dummyData = [...activitiesDummyData];
 
 
-
 const activitiesList = ref<Activities[]>(activitiesDummyData)
 const dailyTasks = ref<DailyTask[]>(dailyTaskDummyData)
 const examSchedules = ref<ExamSchedule[]>(ExamScheduleDummyData)
@@ -46,6 +45,8 @@ const onClickDay = (v: Date) => {
     const selected = dataEvent.find((event) => event.date === date);
     activitiesList.value = selected ? selected.data : []
 }
+
+const selectedTab = ref('home')
 </script>
 
 <template>
@@ -90,58 +91,53 @@ const onClickDay = (v: Date) => {
                 <p class="inter-normal black-2" style="font-size: 25px; font-weight: 700;">Daily Task</p>
                 <div class="bg-white input-card" style="gap: 10px">
                     <!-- progress -->
-                    <div class="flex flex-row justify-content-center" style="padding: 10px;">
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
-                            style="height: 75px; gap:10px">
-                            <div class="flex flex-column progress-badge">
+                    <div class="flex flex-row justify-content-center" style="padding: 10px 0px;">
+                        <div class="flex flex-column w-5 justify-content-center align-items-center" style="height: 75px; gap:10px">
+                            <div class="flex flex-column progress-badge progress-grey">
                                 <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">20</p>
                             </div>
-                            <div class="progress-bar w-full" style="height: 15px; border-radius: 10px 0px 0px 10px;"></div>
+                            <div class="progress-bar progress-grey w-full" style="height: 15px; border-radius: 10px 0px 0px 10px;"></div>
                         </div>
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
-                            style="height: 75px; gap:10px">
-                            <div class="flex flex-column progress-badge">
+                        <div class="flex flex-column w-5 justify-content-center align-items-center" style="height: 75px; gap:10px">
+                            <div class="flex flex-column progress-badge progress-grey">
                                 <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">40</p>
                             </div>
-                            <div class="progress-bar w-full" style="height: 15px;"></div>
+                            <div class="progress-bar progress-grey w-full" style="height: 15px;"></div>
                         </div>
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
-                            style="height: 75px; gap:10px">
+                        <div class="flex flex-column w-5 justify-content-center align-items-center" style="height: 75px; gap:10px">
                             <div class="flex flex-column progress-badge">
-                                <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">60</p>
+                                <p class="inter-normal grey-3" style="font-size: 20px; font-weight: 600;">60</p>
                             </div>
-                            <div class="progress-bar w-full" style="height: 15px;"></div>
+                            <div class="progress-bar progress-light-grey w-full" style="height: 15px;"></div>
                         </div>
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
-                            style="height: 75px; gap:10px">
+                        <div class="flex flex-column w-5 justify-content-center align-items-center" style="height: 75px; gap:10px">
                             <div class="flex flex-column progress-badge">
-                                <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">80</p>
+                                <p class="inter-normal grey-3" style="font-size: 20px; font-weight: 600;">80</p>
                             </div>
-                            <div class="progress-bar w-full" style="height: 15px;"></div>
+                            <div class="progress-bar progress-light-grey w-full" style="height: 15px;"></div>
                         </div>
-                        <div class="flex flex-column w-4rem justify-content-center align-items-center"
-                            style="height: 75px; gap:10px">
+                        <div class="flex flex-column w-5 justify-content-center align-items-center" style="height: 75px; gap:10px">
                             <div class="flex flex-column progress-badge">
-                                <p class="inter-normal text-white" style="font-size: 20px; font-weight: 600;">100</p>
+                                <p class="inter-normal grey-3" style="font-size: 20px; font-weight: 600;">100</p>
                             </div>
-                            <div class="progress-bar w-full" style="height: 15px; border-radius: 0px 10px 10px 0px;"></div>
+                            <div class="progress-bar progress-light-grey w-full" style="height: 15px; border-radius: 0px 10px 10px 0px;"></div>
                         </div>
                     </div>
                     <!-- task list -->
                     <div class="flex flex-column" style="gap: 10px; margin-top: 10px" v-for="task in dailyTasks"
                         :key="task.id">
                         <div class="flex flex-column">
-                            <div class="grid align-items-center justify-content-center">
-                                <div class="col-8 lg:col-8">
-                                    <p>{{ task.name }}</p>
-                                    <p>{{ task.description }}</p>
+                            <div class="flex align-items-center justify-content-between">
+                                <div class="flex flex-column">
+                                    <p class="inter-normal black-3" style="font-size: 14px; font-weight: 500;">{{ task.name }}</p>
+                                    <p class="inter-normal grey-2" style="font-size: 14px; font-weight: 400; letter-spacing: 0.7px;" >{{ task.description }}</p>
                                 </div>
-                                <button class="col-4 lg:col-2 btn-add" style="width: 99px; height: 39px;"
-                                    :class="{ 'btn-achieved': task.achieved, 'btn-go': !task.achieved }">
+                                <button class="btn-add" style="width: 99px; height: 39px;" 
+                                 :class="{'btn-achieved': task.achieved, 'btn-go': !task.achieved}">
                                     <span class="mx-auto">{{ task.achieved ? 'Achieved' : 'Go' }}</span>
                                 </button>
                             </div>
-                            <div class="line" style="margin-bottom: 10px"></div>
+                            <div class="line" style="margin: 7px 0px 5px 0px"></div>
                         </div>
                     </div>
                 </div>
@@ -191,23 +187,19 @@ const onClickDay = (v: Date) => {
                 <p class="inter-normal black-2" style="font-size: 25px; font-weight: 700;">Exam Schedule</p>
                 <div class="bg-white input-card flex flex-column py-0">
                     <div class="flex flex-column" style="padding: 10px 10px" v-for="exam in examSchedules" :key="exam.id">
-                        <div class="flex align-items-center justify-content-between">
-                            <div class="flex align-items-center">
-                                <div class="col-1 align-items-center"
-                                    style="border-radius: 10px; border: 1px solid #000; width: 50px; height: 50px; padding: 0px 13px">
-                                    <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.day }}
-                                    </p>
-                                    <p class="inter-normal black-2 text-center" style="font-size: 10px; font-weight: 600;">{{ exam.month }}
-                                    </p>
+                        <div class="flex flex-row align-items-center justify-content-between">
+                            <div class="flex align-items-center" style="gap: 10px">
+                                <div class="flex flex-column align-items-center justify-content-center" 
+                                style="border-radius: 10px; border: 1px solid #000; width: 50px; height: 50px;">
+                                    <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.day }}</p>
+                                    <p class="inter-normal black-2" style="font-size: 10px; font-weight: 600;">{{ exam.month }}</p>
                                 </div>
-                                <div class="col-7">
-                                    <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.name }}
-                                    </p>
-                                    <p class="inter-normal grey-1" style="font-size: 14px; font-weight: 600;">{{ exam.time }}
-                                    </p>
+                                <div class="flex flex-column">
+                                    <p class="inter-normal black-2" style="font-size: 20px; font-weight: 600;">{{ exam.name}}</p>
+                                    <p class="inter-normal grey-1" style="font-size: 14px; font-weight: 600;">{{ exam.time }}</p>
                                 </div>
                             </div>
-                            <button class="btn-add col-4">
+                            <button class="btn-add">
                                 <span>Attend</span>
                             </button>
                         </div>
@@ -238,7 +230,7 @@ const onClickDay = (v: Date) => {
                     </div>
 
                     <div>
-                        <VirtualScroller :items="activitiesList" :itemSize="50" style="height: 290px">
+                        <VirtualScroller :items="activitiesList" :itemSize="100" style="height: 245px">
                             <template v-slot:item="{ item }">
                                 <Card class="border-1 shadow-0 border-round mb-2 p-0 m-0 card mr-3"
                                     style="box-shadow: none;">
@@ -260,17 +252,20 @@ const onClickDay = (v: Date) => {
             <!-- courses section -->
             <div class="flex flex-column" style="margin: 10px 0px; gap: 10px">
                 <div class="flex flex-row" style="gap: 10px">
-                    <Button size="small" class="btn-header min-w-max active">
+                    <Button size="small" class="btn-header min-w-max" @click="selectedTab = 'home'"
+                     :class="{ active: selectedTab === 'home' }">
                         <p class="inter-normal text-white" style="font-size: 16px; font-weight: 600;">Home</p>
                     </Button>
-                    <Button size="small" class="btn-header min-w-max">
+                    <Button size="small" class="btn-header min-w-max" @click="selectedTab = 'In Progress'"
+                     :class="{ active: selectedTab === 'In Progress' }">
                         <p class="inter-normal text-white" style="font-size: 16px; font-weight: 600;">In Progress</p>
                     </Button>
-                    <Button size="small" class="btn-header min-w-max">
-                        <p class="inter-normal text-white" style="font-size: 16px; font-weight: 600;">Compeleted</p>
+                    <Button size="small" class="btn-header min-w-max" @click="selectedTab = 'Completed'"
+                     :class="{ active: selectedTab === 'Completed' }">
+                        <p class="inter-normal text-white" style="font-size: 16px; font-weight: 600;">Completed</p>
                     </Button>
                 </div>
-                <CoursesDashboard></CoursesDashboard>
+                <CoursesDashboard :selectedTab="selectedTab"></CoursesDashboard>
             </div>
         </div>
     </section>
@@ -299,12 +294,24 @@ const onClickDay = (v: Date) => {
     flex-shrink: 0;
     border-radius: 10px;
     border: 1px solid var(--Suggested-dark-grey, #808081);
+    
+}
+
+.progress-grey {
     background: var(--Suggested-dark-grey, #808081);
+}
+.progress-light-grey {
+    background: var(--Suggested-light-grey, #EEE);
 }
 
 .progress-bar {
     border: 1px solid var(--Suggested-grey, #D9D9D9);
-    background: var(--Suggested-dark-grey, #808081);
+}
+
+@media (max-width: 1400px) {
+    .progress- {
+        width: 240px;
+    }
 }
 
 .btn-add {
@@ -476,4 +483,15 @@ const onClickDay = (v: Date) => {
 
 .btn-go {
     background-color: #E26954;
-}</style>
+  }
+
+  ::v-deep(.card) {
+    .p-card-body {
+        padding: 0;
+
+        .p-card-content {
+            padding: 10px;
+        }
+    }
+}
+</style>
