@@ -336,15 +336,12 @@ const closeSidebar = () => {
   }
 
 .side-bar.collapse .features-item-text{
+  opacity: 0;
   transition: opacity 0.2s ease;
-  display: none;
 }
 
 .side-bar.collapse .features-item{
   width: 85%;
-  svg {
-    margin-top: 7px;
-  }
 }
 
 .menu-root {

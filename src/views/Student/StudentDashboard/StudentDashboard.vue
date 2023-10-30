@@ -15,25 +15,25 @@ import type { Activities } from './Activity/Activity.type'
 const dummyData = [...activitiesDummyData];
 
 
-const activitiesList = ref<Activities[]>(activitiesDummyData)
+const activitiesList = ref<Activities[]>([])
 const dailyTasks = ref<DailyTask[]>(dailyTaskDummyData)
 const examSchedules = ref<ExamSchedule[]>(ExamScheduleDummyData)
 
 const dataEvent = [{
-    date: '2023-09-20',
+    date: '2023-10-20',
     data: dummyData.splice(0, Math.random() * 10)
 }, {
-    date: '2023-09-21',
+    date: '2023-10-21',
     data: dummyData.splice(0, Math.random() * 10)
 }, {
-    date: '2023-09-10',
+    date: '2023-10-10',
     data: dummyData.splice(0, Math.random() * 10)
 }, {
-    date: '2023-09-13',
+    date: '2023-10-13',
     data: dummyData.splice(0, Math.random() * 10)
 },
 {
-    date: '2023-09-14',
+    date: '2023-10-14',
     data: dummyData.splice(0, Math.random() * 10)
 },]
 
