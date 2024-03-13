@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import ColumnGroup from 'primevue/columngroup' // optional
-import Row from 'primevue/row'
-import StarRating from 'vue-star-rating'
-import { ref, watchEffect, watch } from 'vue'
+import { ref} from 'vue'
 import type { Student } from './Student.type'
 import { StudentDummyData } from './StudentDummyData'
 

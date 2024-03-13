@@ -23,6 +23,16 @@ const router = createRouter({
       name: 'grades',
       component: () => import('../views/Student/StudentGrades/StudentGrades.vue')
     },
+    {
+      path: '/admin/reviews',
+      name: 'reviews',
+      component: () => import('../views/Student/StudentReviews/StudentReviews.vue')
+    },
+    {
+      path: '/admin/badges',
+      name: 'reviews',
+      component: () => import('../views/Student/StudentBadges/StudentBadges.vue')
+    },
     // Profile Instructor
     {
       path: '/admin/profile/instructors',
