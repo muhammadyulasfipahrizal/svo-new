@@ -18,7 +18,7 @@ const commentList = ref<CommentLive[]>(commentLiveDummyData)
 <template>
     <section style="padding: 10px; gap: 10px;">
         <section class="grid w-full">
-            <h1 class="inter-normal black-1 col-12" style="font-size: 35px; font-weight: 700; padding: 0px 10px; margin: 10px 0px">LIVE Video</h1>
+            <h1 class="inter-normal black-1 col-12" style="font-size: 35px; font-weight: 700; padding: 0px 10px; margin: 10px 0px">TEST Video</h1>
             <!-- main video -->
             <div v-if="!isComment" class="mb-3 w-full col-12">
                 <div class="grid overflow-hidden relative">
