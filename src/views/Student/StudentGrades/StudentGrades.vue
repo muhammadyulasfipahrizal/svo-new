@@ -139,8 +139,11 @@ const showModal = (studentList: Student) => {
             </template>
             <template #body="value">
               <div class="flex justify-content-start gap-3 w-full align-items-center">
-                <img :src="value.data.image" alt="" style="width: 50px; height: 50px; 
-                    border-radius: 30px; object-fit: cover;" />
+                <img
+                  :src="value.data.image"
+                  alt=""
+                  style="width: 50px; height: 50px; border-radius: 30px; object-fit: cover"
+                />
                 <div class="flex flex-column align-items-center student-name">
                   <h3 class="font-bold">{{ value.data.name }}</h3>
                 </div>
@@ -261,7 +264,7 @@ const showModal = (studentList: Student) => {
             <template #body="value">
               <div class="flex justify-content-center w-full align-items-center">
                 <template v-if="value.data.status === 'pass'">
-                  <p class="mr-3 font-bold" style="font-size: 16px;">Passed</p>
+                  <p class="mr-3 font-bold" style="font-size: 16px">Passed</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -277,7 +280,7 @@ const showModal = (studentList: Student) => {
                   </svg>
                 </template>
                 <template v-if="value.data.status === 'fail'">
-                  <p class="mr-3 font-bold" style="font-size: 16px;">Failed</p>
+                  <p class="mr-3 font-bold" style="font-size: 16px">Failed</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -293,7 +296,7 @@ const showModal = (studentList: Student) => {
                   </svg>
                 </template>
                 <template v-if="value.data.status === 'none'">
-                  <p class="mr-3 font-bold" style="font-size: 16px;">Non</p>
+                  <p class="mr-3 font-bold" style="font-size: 16px">Non</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -320,13 +323,28 @@ const showModal = (studentList: Student) => {
             <template #body="{ data }">
               <div class="flex justify-content-center">
                 <template v-if="data.status === 'pass'">
-                  <Button label="View" class="btn-green" style="width: 99px; height: 39px;" @click="showModal(data)" />
+                  <Button
+                    label="View"
+                    class="btn-green"
+                    style="width: 99px; height: 39px"
+                    @click="showModal(data)"
+                  />
                 </template>
                 <template v-if="data.status === 'fail'">
-                  <Button label="Retake" class="btn-red" style="width: 99px; height: 39px;" @click="showModal(data)" />
+                  <Button
+                    label="Retake"
+                    class="btn-red"
+                    style="width: 99px; height: 39px"
+                    @click="showModal(data)"
+                  />
                 </template>
                 <template v-if="data.status === 'none'">
-                  <Button label="Non" class="btn-grey" style="width: 99px; height: 39px;" @click="showModal(data)" />
+                  <Button
+                    label="Non"
+                    class="btn-grey"
+                    style="width: 99px; height: 39px"
+                    @click="showModal(data)"
+                  />
                 </template>
               </div>
             </template>
@@ -349,7 +367,7 @@ const showModal = (studentList: Student) => {
           <img
             :src="studentGrades?.image || '/assets/img/avatar-black.png'"
             class="modal-image border-circle"
-            style="margin-right: 10px; width: 39px; height: 39px; object-fit: cover;"
+            style="margin-right: 10px; width: 39px; height: 39px; object-fit: cover"
           />
           <p class="font-bold" style="font-size: 16px">{{ studentGrades?.name }}</p>
         </div>
@@ -429,7 +447,7 @@ const showModal = (studentList: Student) => {
 
         <!-- daily -->
         <div class="flex flex-column">
-          <template v-if="studentGrades?.daily >= 70">
+          <template v-if="studentGrades && studentGrades.daily >= 70">
             <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
               <div class="flex flex-row align-items-center">
                 <svg
@@ -453,354 +471,358 @@ const showModal = (studentList: Student) => {
               </div>
             </div>
           </template>
-          <template v-if="studentGrades?.daily > 1 && studentGrades?.daily < 70">
+          <template v-if="studentGrades && studentGrades.daily > 1 && studentGrades.daily < 70">
             <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                <div class="flex flex-row align-items-center">
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                    >
-                    <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
-                    <path
-                        d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
-                        fill="white"
-                    />
-                    </svg>
-                    <p class="modal-text ml-2">Daily Task</p>
-                </div>
-                <div class="flex flex-row justify-content-end">
-                    <p class="modal-text mr-1">Grade:</p>
-                    <p class="font-bold" style="color: #BE2F00">{{ studentGrades?.daily }}%</p>
-                </div>
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
+                  <path
+                    d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Daily Task</p>
+              </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #be2f00">{{ studentGrades?.daily }}%</p>
+              </div>
             </div>
           </template>
-          <template v-if="studentGrades?.daily === 0">
+          <template v-if="studentGrades && studentGrades?.daily === 0">
             <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                <div class="flex flex-row align-items-center">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="25"
-                        height="25"
-                        viewBox="0 0 25 25"
-                        fill="none"
-                        >
-                        <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
-                        <path
-                            d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
-                            fill="white"
-                        />
-                    </svg>
-                    <p class="modal-text ml-2">Daily Task</p>
-                </div>
-                <div class="flex flex-row justify-content-end">
-                    <p class="modal-text mr-1">Grade:</p>
-                    <p class="font-bold" style="color: #D9D9D9">non</p>
-                </div>
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                >
+                  <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
+                  <path
+                    d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Daily Task</p>
+              </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #d9d9d9">non</p>
+              </div>
             </div>
           </template>
         </div>
         <!-- quiz -->
         <div class="flex flex-column">
-            <template v-if="studentGrades?.quiz >= 70">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                <div class="flex flex-row align-items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                  >
-                    <rect y="0.5" width="24" height="24" rx="12" fill="#659872" />
-                    <path
-                      d="M18.7104 7.70986C18.6175 7.61613 18.5069 7.54174 18.385 7.49097C18.2632 7.4402 18.1324 7.41406 18.0004 7.41406C17.8684 7.41406 17.7377 7.4402 17.6159 7.49097C17.494 7.54174 17.3834 7.61613 17.2904 7.70986L9.84044 15.1699L6.71044 12.0299C6.61392 11.9366 6.49998 11.8633 6.37512 11.8141C6.25026 11.7649 6.11694 11.7408 5.98276 11.7431C5.84858 11.7454 5.71617 11.7741 5.59309 11.8276C5.47001 11.8811 5.35868 11.9583 5.26544 12.0549C5.1722 12.1514 5.09889 12.2653 5.04968 12.3902C5.00048 12.515 4.97635 12.6484 4.97867 12.7825C4.98099 12.9167 5.00972 13.0491 5.06321 13.1722C5.1167 13.2953 5.19392 13.4066 5.29044 13.4999L9.13044 17.3399C9.2234 17.4336 9.334 17.508 9.45586 17.5588C9.57772 17.6095 9.70843 17.6357 9.84044 17.6357C9.97245 17.6357 10.1032 17.6095 10.225 17.5588C10.3469 17.508 10.4575 17.4336 10.5504 17.3399L18.7104 9.17986C18.8119 9.08622 18.893 8.97257 18.9484 8.84607C19.0038 8.71957 19.0324 8.58296 19.0324 8.44486C19.0324 8.30676 19.0038 8.17015 18.9484 8.04365C18.893 7.91715 18.8119 7.8035 18.7104 7.70986Z"
-                      fill="white"
-                    />
-                  </svg>
-                  <p class="modal-text ml-2">Quiz</p>
-                </div>
-                <div class="flex flex-row justify-content-end">
-                  <p class="modal-text mr-1">Grade:</p>
-                  <p class="font-bold" style="color: #659872">{{ studentGrades?.quiz }}%</p>
-                </div>
+          <template v-if="studentGrades && studentGrades?.quiz >= 70">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#659872" />
+                  <path
+                    d="M18.7104 7.70986C18.6175 7.61613 18.5069 7.54174 18.385 7.49097C18.2632 7.4402 18.1324 7.41406 18.0004 7.41406C17.8684 7.41406 17.7377 7.4402 17.6159 7.49097C17.494 7.54174 17.3834 7.61613 17.2904 7.70986L9.84044 15.1699L6.71044 12.0299C6.61392 11.9366 6.49998 11.8633 6.37512 11.8141C6.25026 11.7649 6.11694 11.7408 5.98276 11.7431C5.84858 11.7454 5.71617 11.7741 5.59309 11.8276C5.47001 11.8811 5.35868 11.9583 5.26544 12.0549C5.1722 12.1514 5.09889 12.2653 5.04968 12.3902C5.00048 12.515 4.97635 12.6484 4.97867 12.7825C4.98099 12.9167 5.00972 13.0491 5.06321 13.1722C5.1167 13.2953 5.19392 13.4066 5.29044 13.4999L9.13044 17.3399C9.2234 17.4336 9.334 17.508 9.45586 17.5588C9.57772 17.6095 9.70843 17.6357 9.84044 17.6357C9.97245 17.6357 10.1032 17.6095 10.225 17.5588C10.3469 17.508 10.4575 17.4336 10.5504 17.3399L18.7104 9.17986C18.8119 9.08622 18.893 8.97257 18.9484 8.84607C19.0038 8.71957 19.0324 8.58296 19.0324 8.44486C19.0324 8.30676 19.0038 8.17015 18.9484 8.04365C18.893 7.91715 18.8119 7.8035 18.7104 7.70986Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Quiz</p>
               </div>
-            </template>
-            <template v-if="studentGrades?.quiz > 1 && studentGrades?.quiz < 70">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                  <div class="flex flex-row align-items-center">
-                      <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="25"
-                      viewBox="0 0 24 25"
-                      fill="none"
-                      >
-                      <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
-                      <path
-                          d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
-                          fill="white"
-                      />
-                      </svg>
-                      <p class="modal-text ml-2">Quiz</p>
-                  </div>
-                  <div class="flex flex-row justify-content-end">
-                      <p class="modal-text mr-1">Grade:</p>
-                      <p class="font-bold" style="color: #BE2F00">{{ studentGrades?.quiz }}%</p>
-                  </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #659872">{{ studentGrades?.quiz }}%</p>
               </div>
-            </template>
-            <template v-if="studentGrades?.quiz === 0">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                  <div class="flex flex-row align-items-center">
-                      <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="25"
-                          height="25"
-                          viewBox="0 0 25 25"
-                          fill="none"
-                          >
-                          <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
-                          <path
-                              d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
-                              fill="white"
-                          />
-                      </svg>
-                      <p class="modal-text ml-2">Quiz</p>
-                  </div>
-                  <div class="flex flex-row justify-content-end">
-                      <p class="modal-text mr-1">Grade:</p>
-                      <p class="font-bold" style="color: #D9D9D9">non</p>
-                  </div>
+            </div>
+          </template>
+          <template v-if="studentGrades && studentGrades?.quiz > 1 && studentGrades?.quiz < 70">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
+                  <path
+                    d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Quiz</p>
               </div>
-            </template>
-          </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #be2f00">{{ studentGrades?.quiz }}%</p>
+              </div>
+            </div>
+          </template>
+          <template v-if="studentGrades && studentGrades?.quiz === 0">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                >
+                  <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
+                  <path
+                    d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Quiz</p>
+              </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #d9d9d9">non</p>
+              </div>
+            </div>
+          </template>
+        </div>
         <!-- assesment -->
         <div class="flex flex-column">
-            <template v-if="studentGrades?.assesment >= 70">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                <div class="flex flex-row align-items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                  >
-                    <rect y="0.5" width="24" height="24" rx="12" fill="#659872" />
-                    <path
-                      d="M18.7104 7.70986C18.6175 7.61613 18.5069 7.54174 18.385 7.49097C18.2632 7.4402 18.1324 7.41406 18.0004 7.41406C17.8684 7.41406 17.7377 7.4402 17.6159 7.49097C17.494 7.54174 17.3834 7.61613 17.2904 7.70986L9.84044 15.1699L6.71044 12.0299C6.61392 11.9366 6.49998 11.8633 6.37512 11.8141C6.25026 11.7649 6.11694 11.7408 5.98276 11.7431C5.84858 11.7454 5.71617 11.7741 5.59309 11.8276C5.47001 11.8811 5.35868 11.9583 5.26544 12.0549C5.1722 12.1514 5.09889 12.2653 5.04968 12.3902C5.00048 12.515 4.97635 12.6484 4.97867 12.7825C4.98099 12.9167 5.00972 13.0491 5.06321 13.1722C5.1167 13.2953 5.19392 13.4066 5.29044 13.4999L9.13044 17.3399C9.2234 17.4336 9.334 17.508 9.45586 17.5588C9.57772 17.6095 9.70843 17.6357 9.84044 17.6357C9.97245 17.6357 10.1032 17.6095 10.225 17.5588C10.3469 17.508 10.4575 17.4336 10.5504 17.3399L18.7104 9.17986C18.8119 9.08622 18.893 8.97257 18.9484 8.84607C19.0038 8.71957 19.0324 8.58296 19.0324 8.44486C19.0324 8.30676 19.0038 8.17015 18.9484 8.04365C18.893 7.91715 18.8119 7.8035 18.7104 7.70986Z"
-                      fill="white"
-                    />
-                  </svg>
-                  <p class="modal-text ml-2">Assesment</p>
-                </div>
-                <div class="flex flex-row justify-content-end">
-                  <p class="modal-text mr-1">Grade:</p>
-                  <p class="font-bold" style="color: #659872">{{ studentGrades?.assesment }}%</p>
-                </div>
+          <template v-if="studentGrades && studentGrades?.assesment >= 70">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#659872" />
+                  <path
+                    d="M18.7104 7.70986C18.6175 7.61613 18.5069 7.54174 18.385 7.49097C18.2632 7.4402 18.1324 7.41406 18.0004 7.41406C17.8684 7.41406 17.7377 7.4402 17.6159 7.49097C17.494 7.54174 17.3834 7.61613 17.2904 7.70986L9.84044 15.1699L6.71044 12.0299C6.61392 11.9366 6.49998 11.8633 6.37512 11.8141C6.25026 11.7649 6.11694 11.7408 5.98276 11.7431C5.84858 11.7454 5.71617 11.7741 5.59309 11.8276C5.47001 11.8811 5.35868 11.9583 5.26544 12.0549C5.1722 12.1514 5.09889 12.2653 5.04968 12.3902C5.00048 12.515 4.97635 12.6484 4.97867 12.7825C4.98099 12.9167 5.00972 13.0491 5.06321 13.1722C5.1167 13.2953 5.19392 13.4066 5.29044 13.4999L9.13044 17.3399C9.2234 17.4336 9.334 17.508 9.45586 17.5588C9.57772 17.6095 9.70843 17.6357 9.84044 17.6357C9.97245 17.6357 10.1032 17.6095 10.225 17.5588C10.3469 17.508 10.4575 17.4336 10.5504 17.3399L18.7104 9.17986C18.8119 9.08622 18.893 8.97257 18.9484 8.84607C19.0038 8.71957 19.0324 8.58296 19.0324 8.44486C19.0324 8.30676 19.0038 8.17015 18.9484 8.04365C18.893 7.91715 18.8119 7.8035 18.7104 7.70986Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Assesment</p>
               </div>
-            </template>
-            <template v-if="studentGrades?.assesment > 1 && studentGrades?.assesment < 70">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                  <div class="flex flex-row align-items-center">
-                      <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="25"
-                      viewBox="0 0 24 25"
-                      fill="none"
-                      >
-                      <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
-                      <path
-                          d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
-                          fill="white"
-                      />
-                      </svg>
-                      <p class="modal-text ml-2">Assesment</p>
-                  </div>
-                  <div class="flex flex-row justify-content-end">
-                      <p class="modal-text mr-1">Grade:</p>
-                      <p class="font-bold" style="color: #BE2F00">{{ studentGrades?.assesment }}%</p>
-                  </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #659872">{{ studentGrades?.assesment }}%</p>
               </div>
-            </template>
-            <template v-if="studentGrades?.assesment === 0">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                  <div class="flex flex-row align-items-center">
-                      <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="25"
-                          height="25"
-                          viewBox="0 0 25 25"
-                          fill="none"
-                          >
-                          <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
-                          <path
-                              d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
-                              fill="white"
-                          />
-                      </svg>
-                      <p class="modal-text ml-2">Assesment</p>
-                  </div>
-                  <div class="flex flex-row justify-content-end">
-                      <p class="modal-text mr-1">Grade:</p>
-                      <p class="font-bold" style="color: #D9D9D9">non</p>
-                  </div>
+            </div>
+          </template>
+          <template
+            v-if="studentGrades && studentGrades?.assesment > 1 && studentGrades?.assesment < 70"
+          >
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
+                  <path
+                    d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Assesment</p>
               </div>
-            </template>
-          </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #be2f00">{{ studentGrades?.assesment }}%</p>
+              </div>
+            </div>
+          </template>
+          <template v-if="studentGrades && studentGrades?.assesment === 0">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                >
+                  <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
+                  <path
+                    d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Assesment</p>
+              </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #d9d9d9">non</p>
+              </div>
+            </div>
+          </template>
+        </div>
         <!-- midterm -->
         <div class="flex flex-column">
-            <template v-if="studentGrades?.midterm >= 70">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                <div class="flex flex-row align-items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                  >
-                    <rect y="0.5" width="24" height="24" rx="12" fill="#659872" />
-                    <path
-                      d="M18.7104 7.70986C18.6175 7.61613 18.5069 7.54174 18.385 7.49097C18.2632 7.4402 18.1324 7.41406 18.0004 7.41406C17.8684 7.41406 17.7377 7.4402 17.6159 7.49097C17.494 7.54174 17.3834 7.61613 17.2904 7.70986L9.84044 15.1699L6.71044 12.0299C6.61392 11.9366 6.49998 11.8633 6.37512 11.8141C6.25026 11.7649 6.11694 11.7408 5.98276 11.7431C5.84858 11.7454 5.71617 11.7741 5.59309 11.8276C5.47001 11.8811 5.35868 11.9583 5.26544 12.0549C5.1722 12.1514 5.09889 12.2653 5.04968 12.3902C5.00048 12.515 4.97635 12.6484 4.97867 12.7825C4.98099 12.9167 5.00972 13.0491 5.06321 13.1722C5.1167 13.2953 5.19392 13.4066 5.29044 13.4999L9.13044 17.3399C9.2234 17.4336 9.334 17.508 9.45586 17.5588C9.57772 17.6095 9.70843 17.6357 9.84044 17.6357C9.97245 17.6357 10.1032 17.6095 10.225 17.5588C10.3469 17.508 10.4575 17.4336 10.5504 17.3399L18.7104 9.17986C18.8119 9.08622 18.893 8.97257 18.9484 8.84607C19.0038 8.71957 19.0324 8.58296 19.0324 8.44486C19.0324 8.30676 19.0038 8.17015 18.9484 8.04365C18.893 7.91715 18.8119 7.8035 18.7104 7.70986Z"
-                      fill="white"
-                    />
-                  </svg>
-                  <p class="modal-text ml-2">Midterm</p>
-                </div>
-                <div class="flex flex-row justify-content-end">
-                  <p class="modal-text mr-1">Grade:</p>
-                  <p class="font-bold" style="color: #659872">{{ studentGrades?.midterm }}%</p>
-                </div>
+          <template v-if="studentGrades && studentGrades?.midterm >= 70">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#659872" />
+                  <path
+                    d="M18.7104 7.70986C18.6175 7.61613 18.5069 7.54174 18.385 7.49097C18.2632 7.4402 18.1324 7.41406 18.0004 7.41406C17.8684 7.41406 17.7377 7.4402 17.6159 7.49097C17.494 7.54174 17.3834 7.61613 17.2904 7.70986L9.84044 15.1699L6.71044 12.0299C6.61392 11.9366 6.49998 11.8633 6.37512 11.8141C6.25026 11.7649 6.11694 11.7408 5.98276 11.7431C5.84858 11.7454 5.71617 11.7741 5.59309 11.8276C5.47001 11.8811 5.35868 11.9583 5.26544 12.0549C5.1722 12.1514 5.09889 12.2653 5.04968 12.3902C5.00048 12.515 4.97635 12.6484 4.97867 12.7825C4.98099 12.9167 5.00972 13.0491 5.06321 13.1722C5.1167 13.2953 5.19392 13.4066 5.29044 13.4999L9.13044 17.3399C9.2234 17.4336 9.334 17.508 9.45586 17.5588C9.57772 17.6095 9.70843 17.6357 9.84044 17.6357C9.97245 17.6357 10.1032 17.6095 10.225 17.5588C10.3469 17.508 10.4575 17.4336 10.5504 17.3399L18.7104 9.17986C18.8119 9.08622 18.893 8.97257 18.9484 8.84607C19.0038 8.71957 19.0324 8.58296 19.0324 8.44486C19.0324 8.30676 19.0038 8.17015 18.9484 8.04365C18.893 7.91715 18.8119 7.8035 18.7104 7.70986Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Midterm</p>
               </div>
-            </template>
-            <template v-if="studentGrades?.midterm > 1 && studentGrades?.midterm < 70">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                  <div class="flex flex-row align-items-center">
-                      <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="25"
-                      viewBox="0 0 24 25"
-                      fill="none"
-                      >
-                      <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
-                      <path
-                          d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
-                          fill="white"
-                      />
-                      </svg>
-                      <p class="modal-text ml-2">Midterm</p>
-                  </div>
-                  <div class="flex flex-row justify-content-end">
-                      <p class="modal-text mr-1">Grade:</p>
-                      <p class="font-bold" style="color: #BE2F00">{{ studentGrades?.midterm }}%</p>
-                  </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #659872">{{ studentGrades?.midterm }}%</p>
               </div>
-            </template>
-            <template v-if="studentGrades?.midterm === 0">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                  <div class="flex flex-row align-items-center">
-                      <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="25"
-                          height="25"
-                          viewBox="0 0 25 25"
-                          fill="none"
-                          >
-                          <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
-                          <path
-                              d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
-                              fill="white"
-                          />
-                      </svg>
-                      <p class="modal-text ml-2">Midterm</p>
-                  </div>
-                  <div class="flex flex-row justify-content-end">
-                      <p class="modal-text mr-1">Grade:</p>
-                      <p class="font-bold" style="color: #D9D9D9">non</p>
-                  </div>
+            </div>
+          </template>
+          <template
+            v-if="studentGrades && studentGrades?.midterm > 1 && studentGrades?.midterm < 70"
+          >
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
+                  <path
+                    d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Midterm</p>
               </div>
-            </template>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #be2f00">{{ studentGrades?.midterm }}%</p>
+              </div>
+            </div>
+          </template>
+          <template v-if="studentGrades?.midterm === 0">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                >
+                  <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
+                  <path
+                    d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Midterm</p>
+              </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #d9d9d9">non</p>
+              </div>
+            </div>
+          </template>
         </div>
         <!-- final -->
         <div class="flex flex-column">
-            <template v-if="studentGrades?.final >= 70">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                <div class="flex flex-row align-items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="25"
-                    viewBox="0 0 24 25"
-                    fill="none"
-                  >
-                    <rect y="0.5" width="24" height="24" rx="12" fill="#659872" />
-                    <path
-                      d="M18.7104 7.70986C18.6175 7.61613 18.5069 7.54174 18.385 7.49097C18.2632 7.4402 18.1324 7.41406 18.0004 7.41406C17.8684 7.41406 17.7377 7.4402 17.6159 7.49097C17.494 7.54174 17.3834 7.61613 17.2904 7.70986L9.84044 15.1699L6.71044 12.0299C6.61392 11.9366 6.49998 11.8633 6.37512 11.8141C6.25026 11.7649 6.11694 11.7408 5.98276 11.7431C5.84858 11.7454 5.71617 11.7741 5.59309 11.8276C5.47001 11.8811 5.35868 11.9583 5.26544 12.0549C5.1722 12.1514 5.09889 12.2653 5.04968 12.3902C5.00048 12.515 4.97635 12.6484 4.97867 12.7825C4.98099 12.9167 5.00972 13.0491 5.06321 13.1722C5.1167 13.2953 5.19392 13.4066 5.29044 13.4999L9.13044 17.3399C9.2234 17.4336 9.334 17.508 9.45586 17.5588C9.57772 17.6095 9.70843 17.6357 9.84044 17.6357C9.97245 17.6357 10.1032 17.6095 10.225 17.5588C10.3469 17.508 10.4575 17.4336 10.5504 17.3399L18.7104 9.17986C18.8119 9.08622 18.893 8.97257 18.9484 8.84607C19.0038 8.71957 19.0324 8.58296 19.0324 8.44486C19.0324 8.30676 19.0038 8.17015 18.9484 8.04365C18.893 7.91715 18.8119 7.8035 18.7104 7.70986Z"
-                      fill="white"
-                    />
-                  </svg>
-                  <p class="modal-text ml-2">Final</p>
-                </div>
-                <div class="flex flex-row justify-content-end">
-                  <p class="modal-text mr-1">Grade:</p>
-                  <p class="font-bold" style="color: #659872">{{ studentGrades?.final }}%</p>
-                </div>
+          <template v-if="studentGrades && studentGrades?.final >= 70">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#659872" />
+                  <path
+                    d="M18.7104 7.70986C18.6175 7.61613 18.5069 7.54174 18.385 7.49097C18.2632 7.4402 18.1324 7.41406 18.0004 7.41406C17.8684 7.41406 17.7377 7.4402 17.6159 7.49097C17.494 7.54174 17.3834 7.61613 17.2904 7.70986L9.84044 15.1699L6.71044 12.0299C6.61392 11.9366 6.49998 11.8633 6.37512 11.8141C6.25026 11.7649 6.11694 11.7408 5.98276 11.7431C5.84858 11.7454 5.71617 11.7741 5.59309 11.8276C5.47001 11.8811 5.35868 11.9583 5.26544 12.0549C5.1722 12.1514 5.09889 12.2653 5.04968 12.3902C5.00048 12.515 4.97635 12.6484 4.97867 12.7825C4.98099 12.9167 5.00972 13.0491 5.06321 13.1722C5.1167 13.2953 5.19392 13.4066 5.29044 13.4999L9.13044 17.3399C9.2234 17.4336 9.334 17.508 9.45586 17.5588C9.57772 17.6095 9.70843 17.6357 9.84044 17.6357C9.97245 17.6357 10.1032 17.6095 10.225 17.5588C10.3469 17.508 10.4575 17.4336 10.5504 17.3399L18.7104 9.17986C18.8119 9.08622 18.893 8.97257 18.9484 8.84607C19.0038 8.71957 19.0324 8.58296 19.0324 8.44486C19.0324 8.30676 19.0038 8.17015 18.9484 8.04365C18.893 7.91715 18.8119 7.8035 18.7104 7.70986Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Final</p>
               </div>
-            </template>
-            <template v-if="studentGrades?.final > 1 && studentGrades?.final < 70">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                  <div class="flex flex-row align-items-center">
-                      <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="25"
-                      viewBox="0 0 24 25"
-                      fill="none"
-                      >
-                      <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
-                      <path
-                          d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
-                          fill="white"
-                      />
-                      </svg>
-                      <p class="modal-text ml-2">Final</p>
-                  </div>
-                  <div class="flex flex-row justify-content-end">
-                      <p class="modal-text mr-1">Grade:</p>
-                      <p class="font-bold" style="color: #BE2F00">{{ studentGrades?.final }}%</p>
-                  </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #659872">{{ studentGrades?.final }}%</p>
               </div>
-            </template>
-            <template v-if="studentGrades?.final === 0">
-              <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
-                  <div class="flex flex-row align-items-center">
-                      <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="25"
-                          height="25"
-                          viewBox="0 0 25 25"
-                          fill="none"
-                          >
-                          <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
-                          <path
-                              d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
-                              fill="white"
-                          />
-                      </svg>
-                      <p class="modal-text ml-2">Final</p>
-                  </div>
-                  <div class="flex flex-row justify-content-end">
-                      <p class="modal-text mr-1">Grade:</p>
-                      <p class="font-bold" style="color: #D9D9D9">non</p>
-                  </div>
+            </div>
+          </template>
+          <template v-if="studentGrades && studentGrades?.final > 1 && studentGrades?.final < 70">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                >
+                  <rect y="0.5" width="24" height="24" rx="12" fill="#BE2F00" />
+                  <path
+                    d="M12.8806 12.4995L16.8153 8.57065C16.9329 8.45303 16.9989 8.29351 16.9989 8.12717C16.9989 7.96083 16.9329 7.80131 16.8153 7.68369C16.6977 7.56608 16.5381 7.5 16.3718 7.5C16.2055 7.5 16.046 7.56608 15.9284 7.68369L12 11.6188L8.0716 7.68369C7.95399 7.56608 7.79449 7.5 7.62817 7.5C7.46185 7.5 7.30234 7.56608 7.18474 7.68369C7.06714 7.80131 7.00107 7.96083 7.00107 8.12717C7.00107 8.29351 7.06714 8.45303 7.18474 8.57065L11.1194 12.4995L7.18474 16.4283C7.1262 16.4864 7.07974 16.5554 7.04803 16.6316C7.01632 16.7077 7 16.7893 7 16.8718C7 16.9542 7.01632 17.0359 7.04803 17.112C7.07974 17.1881 7.1262 17.2572 7.18474 17.3152C7.2428 17.3738 7.31188 17.4203 7.38798 17.452C7.46409 17.4837 7.54572 17.5 7.62817 17.5C7.71062 17.5 7.79225 17.4837 7.86836 17.452C7.94446 17.4203 8.01354 17.3738 8.0716 17.3152L12 13.3802L15.9284 17.3152C15.9865 17.3738 16.0555 17.4203 16.1316 17.452C16.2078 17.4837 16.2894 17.5 16.3718 17.5C16.4543 17.5 16.5359 17.4837 16.612 17.452C16.6881 17.4203 16.7572 17.3738 16.8153 17.3152C16.8738 17.2572 16.9203 17.1881 16.952 17.112C16.9837 17.0359 17 16.9542 17 16.8718C17 16.7893 16.9837 16.7077 16.952 16.6316C16.9203 16.5554 16.8738 16.4864 16.8153 16.4283L12.8806 12.4995Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Final</p>
               </div>
-            </template>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #be2f00">{{ studentGrades?.final }}%</p>
+              </div>
+            </div>
+          </template>
+          <template v-if="studentGrades?.final === 0">
+            <div class="flex flex-row align-items-center justify-content-between" style="gap: 10px">
+              <div class="flex flex-row align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                >
+                  <rect x="0.5" y="0.5" width="24" height="24" rx="12" fill="#D9D9D9" />
+                  <path
+                    d="M18.625 11.5H6.375C6.14294 11.5 5.92038 11.6054 5.75628 11.7929C5.59219 11.9804 5.5 12.2348 5.5 12.5C5.5 12.7652 5.59219 13.0196 5.75628 13.2071C5.92038 13.3946 6.14294 13.5 6.375 13.5H18.625C18.8571 13.5 19.0796 13.3946 19.2437 13.2071C19.4078 13.0196 19.5 12.7652 19.5 12.5C19.5 12.2348 19.4078 11.9804 19.2437 11.7929C19.0796 11.6054 18.8571 11.5 18.625 11.5Z"
+                    fill="white"
+                  />
+                </svg>
+                <p class="modal-text ml-2">Final</p>
+              </div>
+              <div class="flex flex-row justify-content-end">
+                <p class="modal-text mr-1">Grade:</p>
+                <p class="font-bold" style="color: #d9d9d9">non</p>
+              </div>
+            </div>
+          </template>
         </div>
 
         <div class="line"></div>
@@ -859,8 +881,30 @@ const showModal = (studentList: Student) => {
           </div>
         </div>
       </div>
-      <Button size="small" label="Continue with the course" class="w-full my-2 btn-new"
-       style="height: 39px; border-radius: 6px;" />
+      <template v-if="studentGrades && studentGrades?.status === 'pass'">
+        <Button
+          size="small"
+          label="Continue with the course"
+          class="w-full my-2 btn-new"
+          style="height: 39px; border-radius: 6px"
+        />
+      </template>
+      <template v-if="studentGrades && studentGrades?.status === 'fail'">
+        <Button
+          size="small"
+          label="Continue with the course"
+          class="w-full my-2 btn-red"
+          style="height: 39px; border-radius: 6px; background-color: #BE2F00;"
+        />
+      </template>
+      <template v-if="studentGrades && studentGrades?.status === 'none'">
+        <Button
+          size="small"
+          label="Continue with the course"
+          class="w-full my-2 btn-new"
+          style="height: 39px; border-radius: 6px"
+        />
+      </template>
     </Dialog>
   </section>
 </template>
@@ -1027,8 +1071,7 @@ const showModal = (studentList: Student) => {
 }
 
 .line {
-    background-color: #D9D5EC;
-    padding: 1px;
+  background-color: #d9d5ec;
+  padding: 1px;
 }
-
 </style>
