@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'live',
       component: () => import('../views/Student/StudentLive/StudentLive.vue')
     },
+    {
+      path: '/admin/grades',
+      name: 'grades',
+      component: () => import('../views/Student/StudentGrades/StudentGrades.vue')
+    },
     // Profile Instructor
     {
       path: '/admin/profile/instructors',
